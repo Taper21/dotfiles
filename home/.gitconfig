@@ -1,0 +1,7 @@
+[user]
+	email = sebastian.stoerchle.at
+	name = Sebastian
+[push]
+	default = simple
+[core]
+	editor = vim
