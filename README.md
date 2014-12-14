@@ -1,4 +1,10 @@
-dotfiles
+Installation:
 ========
+You need:
+https://github.com/technicalpickles/homesick
 
-Dotfiles
+homesick clone Taper21/dotfiles
+
+homesick symlink dotfiles
+
+DONE ;)
