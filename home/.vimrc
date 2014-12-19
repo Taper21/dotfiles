@@ -5,6 +5,13 @@ set rnu
 set hlsearch
 set t_Co=256
 colorscheme molokai
+
+"easy split navigation"
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
