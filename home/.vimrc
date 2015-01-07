@@ -14,35 +14,18 @@ nnoremap <C-l> <C-w>l
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+call plug#begin('~/.vim/plugged')
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+"Colorscheme (Colorscheme){
+Plug 'MaxSt/FlatColor'
+    let g:flatcolor_termcolors=16
+    set background=dark
+"}
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+Plug 'https://github.com/kien/ctrlp.vim'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-"Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoid a name conflict with L9
-"Plugin 'user/L9', {'name': 'newL9'}
-
-"So wie CRTL-R in Eclipse"
-Plugin 'https://github.com/kien/ctrlp.vim'
-" Track the engine.
-Plugin 'SirVer/ultisnips'
-" " Snippets are separated from the engine. Add this if you want them:
-Bundle 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 " " Trigger configuration. Do not use <tab> if you use
 "Plugin 'Valloric/YouCompleteMe'
 let g:UltiSnipsExpandTrigger="<c-j>"
@@ -52,8 +35,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 "
 " " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+call plug#end()
+
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
