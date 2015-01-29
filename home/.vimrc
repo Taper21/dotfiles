@@ -4,6 +4,8 @@ set number
 set rnu
 set hlsearch
 set wildmenu
+"Backspace tmux
+set backspace=indent,eol,start
 "set t_Co=256
 colorscheme flatcolor
 
