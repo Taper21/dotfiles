@@ -7,7 +7,6 @@ set wildmenu
 "Backspace tmux
 set backspace=indent,eol,start
 "set t_Co=256
-colorscheme flatcolor
 
 "easy split navigation"
 nnoremap <C-h> <C-w>h
@@ -157,3 +156,4 @@ set expandtab
 set smarttab
 set tabstop=4
 set shiftwidth=4
+color flatcolor
