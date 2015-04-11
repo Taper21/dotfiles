@@ -6,7 +6,6 @@ set hlsearch
 set wildmenu
 set backspace=indent,eol,start
 "set t_Co=256
-colorscheme flatcolor
 
 "easy split navigation"
 nnoremap <C-h> <C-w>h
@@ -166,3 +165,4 @@ noremap yP "0P
 if filereadable( ".vimrc.local" )
     source .vimrc.local
 endif
+color flatcolor
