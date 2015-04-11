@@ -32,6 +32,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 " " Trigger configuration. Do not use <tab> if you use
 "Plugin 'Valloric/YouCompleteMe'
+Plug 'christoomey/vim-tmux-navigator'
 let g:UltiSnipsExpandTrigger="<c-j>"
 "let g:UltiSnipsExpandTrigger="<c-space>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
