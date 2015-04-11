@@ -4,7 +4,6 @@ set number
 set rnu
 set hlsearch
 set wildmenu
-"Backspace tmux
 set backspace=indent,eol,start
 "set t_Co=256
 colorscheme flatcolor
@@ -157,3 +156,13 @@ set expandtab
 set smarttab
 set tabstop=4
 set shiftwidth=4
+set hlsearch
+set incsearch
+
+noremap yp "0p
+noremap yP "0P
+
+" If .vimrc.local exists in current directory, to support project-local configs
+if filereadable( ".vimrc.local" )
+    source .vimrc.local
+endif
