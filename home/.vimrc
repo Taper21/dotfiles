@@ -27,17 +27,12 @@ Plug 'MaxSt/FlatColor'
 "}
 
 Plug 'https://github.com/kien/ctrlp.vim'
-
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 " " Trigger configuration. Do not use <tab> if you use
-"Plugin 'Valloric/YouCompleteMe'
-Plug 'christoomey/vim-tmux-navigator'
+let g:UltiSnipsSnippetDirectories=["UltiSnips","plugged/vim-snippets/UltiSnips"]
 let g:UltiSnipsExpandTrigger="<c-j>"
-"let g:UltiSnipsExpandTrigger="<c-space>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-"
 " " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 call plug#end()
