@@ -5,6 +5,8 @@ set rnu
 set hlsearch
 set wildmenu
 set backspace=indent,eol,start
+set colorcolumn=80
+set textwidth=80
 "set t_Co=256
 
 "easy split navigation"
