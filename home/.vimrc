@@ -4,7 +4,11 @@ set number
 set rnu
 set hlsearch
 set wildmenu
+set cursorline
 set backspace=indent,eol,start
+if &term == 'xterm' || &term == 'screen'
+set t_Co=256            " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
+endif
 "set t_Co=256
 
 "easy split navigation"
@@ -32,6 +36,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'mattn/emmet-vim',{'for': ['html','xml']}
+Plug 'matchit.zip'
 Plug 'scrooloose/syntastic'
 let g:syntastic_html_checkers = []
 let g:syntastic_javascript_checkers = ['jshint']
@@ -167,4 +172,5 @@ noremap yP "0P
 if filereadable( ".vimrc.local" )
     source .vimrc.local
 endif
-color flatcolor
+filetype plugin indent on
+colorscheme flatcolor
