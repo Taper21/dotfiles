@@ -9,7 +9,10 @@ set backspace=indent,eol,start
 if &term == 'xterm' || &term == 'screen'
 set t_Co=256            " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
 endif
-set colorcolumn=80
+"set colorcolumn=80
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
+
 set textwidth=80
 
 "easy split navigation"
