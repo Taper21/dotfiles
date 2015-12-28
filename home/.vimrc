@@ -1,3 +1,5 @@
+set nobackup
+set noswapfile
 set nocompatible              " be iMproved, required
 filetype on                  " required
 set number
@@ -34,6 +36,10 @@ Plug 'MaxSt/FlatColor'
     set background=dark
 "}
 
+" lightline  (StatusBar)
+Plug 'itchyny/lightline.vim'
+Plug 'scrooloose/nerdtree'
+map <C-n> :NERDTreeToggle<CR>
 Plug 'https://github.com/kien/ctrlp.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'SirVer/ultisnips'
@@ -42,14 +48,16 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'mattn/emmet-vim',{'for': ['html','xml']}
 Plug 'matchit.zip'
 Plug 'scrooloose/syntastic'
+Plug 'mxw/vim-jsx'
 let g:syntastic_html_checkers = []
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['eslint']
 
 " " Trigger configuration. Do not use <tab> if you use
 let g:UltiSnipsSnippetDirectories=["UltiSnips","plugged/vim-snippets/UltiSnips"]
 let g:UltiSnipsExpandTrigger="<c-j>"
 " " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+let g:jsx_ext_required = 0
 call plug#end()
 
 filetype plugin indent on    " required
