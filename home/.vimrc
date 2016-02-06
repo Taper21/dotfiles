@@ -48,9 +48,14 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'mattn/emmet-vim',{'for': ['html','xml']}
 Plug 'matchit.zip'
 Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'cohama/lexima.vim'
 Plug 'mxw/vim-jsx'
 let g:syntastic_html_checkers = []
 let g:syntastic_javascript_checkers = ['eslint']
+let g:lightline = { 'colorscheme': 'flatcolor' }
 
 " " Trigger configuration. Do not use <tab> if you use
 let g:UltiSnipsSnippetDirectories=["UltiSnips","plugged/vim-snippets/UltiSnips"]
