@@ -52,6 +52,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'cohama/lexima.vim'
+Plug 'dyng/ctrlsf.vim'
+nmap g/ <Plug>CtrlSFPrompt
 Plug 'mxw/vim-jsx'
 let g:syntastic_html_checkers = []
 let g:syntastic_javascript_checkers = ['eslint']
@@ -192,3 +194,4 @@ if filereadable( ".vimrc.local" )
 endif
 filetype plugin indent on
 colorscheme flatcolor
+set clipboard=unnamed,unnamedplus

@@ -113,6 +113,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export NVM_DIR="/home/sebastian/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-source /usr/share/nvm/init-nvm.sh
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm ]
+nvm use 5.9.1
