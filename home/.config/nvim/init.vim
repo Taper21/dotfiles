@@ -51,7 +51,10 @@ Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'cohama/lexima.vim'
+"Plug 'cohama/lexima.vim'
+"Plug 'pangloss/vim-javascript'
+Plug 'isRuslan/vim-es6'
+Plug 'jiangmiao/auto-pairs'
 Plug 'mxw/vim-jsx'
 let g:syntastic_html_checkers = []
 let g:syntastic_javascript_checkers = ['eslint']
@@ -174,12 +177,12 @@ let g:ctrlp_custom_ignore = '\v[\/](git|hg|svn|node_modules)$'
     
 set scrolljump=0
 set scrolloff=5
-set smartindent
+"set smartindent
 set expandtab
 set smarttab
-set softtabstop=4
-set tabstop=4
-set shiftwidth=4
+set softtabstop=2
+set tabstop=2
+set shiftwidth=2
 set hlsearch
 set incsearch
 

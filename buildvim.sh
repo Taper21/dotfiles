@@ -1,7 +1,6 @@
 rm -r vim;
-hg clone https://code.google.com/p/vim/;
+git clone git@github.com:vim/vim.git;
 cd vim;
-hg update;
 make distclean;
 #./configure --with-features=huge \                                            
 #            --enable-gnome-check \
