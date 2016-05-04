@@ -55,6 +55,8 @@ Plug 'AndrewRadev/splitjoin.vim'
 "Plug 'pangloss/vim-javascript'
 Plug 'isRuslan/vim-es6'
 Plug 'jiangmiao/auto-pairs'
+Plug 'dyng/ctrlsf.vim'
+nmap g/ <Plug>CtrlSFPrompt
 Plug 'mxw/vim-jsx'
 let g:syntastic_html_checkers = []
 let g:syntastic_javascript_checkers = ['eslint']
@@ -195,3 +197,4 @@ if filereadable( ".vimrc.local" )
 endif
 filetype plugin indent on
 colorscheme flatcolor
+set clipboard=unnamed,unnamedplus
