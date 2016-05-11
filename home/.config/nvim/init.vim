@@ -38,6 +38,7 @@ Plug 'MaxSt/FlatColor'
 
 " lightline  (StatusBar)
 Plug 'itchyny/lightline.vim'
+Plug 'bling/vim-bufferline'
 Plug 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
 Plug 'https://github.com/kien/ctrlp.vim'
@@ -55,11 +56,12 @@ Plug 'AndrewRadev/splitjoin.vim'
 "Plug 'pangloss/vim-javascript'
 Plug 'isRuslan/vim-es6'
 Plug 'jiangmiao/auto-pairs'
+let g:AutoPairsShortcutBackInsert = '<M-b>'
 Plug 'dyng/ctrlsf.vim'
 nmap g/ <Plug>CtrlSFPrompt
 Plug 'mxw/vim-jsx'
 let g:syntastic_html_checkers = []
-let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_checkers = ['eslint','jshint']
 let g:lightline = { 'colorscheme': 'flatcolor' }
 
 " " Trigger configuration. Do not use <tab> if you use
@@ -124,13 +126,13 @@ runtime! debian.vim
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
-"set showcmd		" Show (partial) command in status line.
-"set showmatch		" Show matching brackets.
-"set ignorecase		" Do case insensitive matching
-"set smartcase		" Do smart case matching
+set showcmd		" Show (partial) command in status line.
+set showmatch		" Show matching brackets.
+set ignorecase		" Do case insensitive matching
+set smartcase		" Do smart case matching
 "set incsearch		" Incremental search
 "set autowrite		" Automatically save before commands like :next and :make
-"set hidden		" Hide buffers when they are abandoned
+set hidden		" Hide buffers when they are abandoned
 set mouse=a		" Enable mouse usage (all modes)
 
 " Source a global configuration file if available
