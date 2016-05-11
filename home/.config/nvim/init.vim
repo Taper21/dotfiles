@@ -39,6 +39,7 @@ Plug 'MaxSt/FlatColor'
 " lightline  (StatusBar)
 Plug 'itchyny/lightline.vim'
 Plug 'bling/vim-bufferline'
+let g:bufferline_rotate = 2
 Plug 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
 Plug 'https://github.com/kien/ctrlp.vim'
@@ -200,3 +201,18 @@ endif
 filetype plugin indent on
 colorscheme flatcolor
 set clipboard=unnamed,unnamedplus
+let mapleader=" "
+noremap <Leader><Leader> <C-^>
+noremap <Leader>j :bp<CR>
+noremap <Leader>k :bn<CR>
+noremap <Leader>d :bd<CR>
+nnoremap <Leader>tc :tabc<return>
+nnoremap <Leader>tn :tabn<return>
+nnoremap <Leader>tp :tabp<return>
+nnoremap <Leader>te :tabe<space>
+nmap <leader>vpi :PlugInstall<CR>
+nmap <leader>vpu :PlugUpdate<CR>
+nmap <leader>vpc :PlugClean<CR>
+nmap <leader>use :UltiSnipsEdit<CR>
+set splitright splitbelow
+
