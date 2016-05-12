@@ -214,5 +214,7 @@ nmap <leader>vpi :PlugInstall<CR>
 nmap <leader>vpu :PlugUpdate<CR>
 nmap <leader>vpc :PlugClean<CR>
 nmap <leader>use :UltiSnipsEdit<CR>
+noremap <Leader>w :w<CR>
+noremap <Leader>q :q<CR>
 set splitright splitbelow
 
