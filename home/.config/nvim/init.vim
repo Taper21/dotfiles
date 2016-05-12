@@ -56,6 +56,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 "Plug 'cohama/lexima.vim'
 "Plug 'pangloss/vim-javascript'
 Plug 'isRuslan/vim-es6'
+Plug 'IN3D/vim-raml'
 Plug 'jiangmiao/auto-pairs'
 let g:AutoPairsShortcutBackInsert = '<M-b>'
 Plug 'dyng/ctrlsf.vim'
@@ -214,6 +215,7 @@ nmap <leader>vpi :PlugInstall<CR>
 nmap <leader>vpu :PlugUpdate<CR>
 nmap <leader>vpc :PlugClean<CR>
 nmap <leader>use :UltiSnipsEdit<CR>
+nmap <leader>en :e ~/.config/nvim/init.vim<CR>
 noremap <Leader>w :w<CR>
 noremap <Leader>q :q<CR>
 noremap <Leader>q! :q!<CR>
