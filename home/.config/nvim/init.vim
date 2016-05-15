@@ -8,6 +8,11 @@ set hlsearch
 set wildmenu
 set cursorline
 set backspace=indent,eol,start
+set list
+set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
+set fillchars=vert:│ "Set vertical border of splits
+set splitright splitbelow
+
 if &term == 'xterm' || &term == 'screen'
 set t_Co=256            " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
 endif
@@ -220,5 +225,4 @@ noremap <Leader>w :w<CR>
 noremap <Leader>q :q<CR>
 noremap <Leader>q! :q!<CR>
 noremap <Leader>wq :wq<CR>
-set splitright splitbelow
 
