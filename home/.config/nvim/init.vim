@@ -60,6 +60,19 @@ Plug 'tpope/vim-surround'
 Plug 'AndrewRadev/splitjoin.vim'
 "Plug 'cohama/lexima.vim'
 "Plug 'pangloss/vim-javascript'
+Plug 'neomake/neomake'
+let g:neomake_javascript_enabled_makers = ['jshint', 'eslint']
+let g:neomake_warning_sign = {
+        \ 'text': '?',
+        \ 'texthl': 'WarningMsg'
+        \ }
+let g:neomake_error_sign = {
+        \ 'text': '!',
+        \ 'texthl': 'ErrorMsg'
+        \ }
+    "let g:neomake_open_list = 1
+autocmd BufEnter,BufWritePost *.js :Neomake
+autocmd BufEnter,BufWritePost *.jsx :Neomake
 Plug 'isRuslan/vim-es6'
 Plug 'IN3D/vim-raml'
 Plug 'jiangmiao/auto-pairs'
@@ -225,4 +238,5 @@ noremap <Leader>w :w<CR>
 noremap <Leader>q :q<CR>
 noremap <Leader>q! :q!<CR>
 noremap <Leader>wq :wq<CR>
+noremap <Leader>e :Errors<CR>
 
