@@ -5,4 +5,4 @@
 	default = simple
 [core]
 	editor = vim
-	excludesfile = /Users/basti/.gitignore
+	excludesfile = /Users/sebastian/.gitignore
