@@ -69,8 +69,8 @@ let g:neomake_error_sign = {
         \ 'texthl': 'ErrorMsg'
         \ }
     "let g:neomake_open_list = 1
-let g:neomake_javascript_enabled_makers = ['jshint', 'jscs']
-let g:neomake_jsx_enabled_makers = ['jshint', 'jscs']
+let g:neomake_javascript_enabled_makers = ['eslint', 'jshint', 'jscs']
+let g:neomake_jsx_enabled_makers = ['eslint', 'jshint', 'jscs']
 autocmd BufWrite,BufEnter *.js :Neomake
 Plug 'isRuslan/vim-es6'
 Plug 'IN3D/vim-raml'
