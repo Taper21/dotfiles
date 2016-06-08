@@ -12,3 +12,7 @@ export ANDROID_HOME=/usr/local/opt/android-sdk
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm ]
 nvm use 5.9.1
+#vimode
+bindkey -v
+#search in history
+bindkey '^R' history-incremental-search-backward
