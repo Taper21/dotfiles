@@ -42,6 +42,8 @@ Plug 'MaxSt/FlatColor'
 "}
 
 " lightline  (StatusBar)
+Plug 'svermeulen/vim-repeat'
+Plug 'wellle/targets.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'bling/vim-bufferline'
 let g:bufferline_rotate = 2
@@ -69,7 +71,7 @@ let g:neomake_error_sign = {
         \ 'texthl': 'ErrorMsg'
         \ }
     "let g:neomake_open_list = 1
-let g:neomake_javascript_enabled_makers = ['eslint', 'jshint', 'jscs']
+let g:neomake_javascript_enabled_makers = ['jshint', 'jscs']
 let g:neomake_jsx_enabled_makers = ['eslint', 'jshint', 'jscs']
 autocmd BufWrite,BufEnter *.js :Neomake
 Plug 'isRuslan/vim-es6'
@@ -204,9 +206,6 @@ set shiftwidth=2
 set hlsearch
 set incsearch
 
-noremap yp "0p
-noremap yP "0P
-
 " If .vimrc.local exists in current directory, to support project-local configs
 if filereadable( ".vimrc.local" )
     source .vimrc.local
@@ -228,6 +227,7 @@ nmap <leader>vpu :PlugUpdate<CR>
 nmap <leader>vpc :PlugClean<CR>
 nmap <leader>use :UltiSnipsEdit<CR>
 nmap <leader>en :e ~/.config/nvim/init.vim<CR>
+nmap <leader>sf :NERDTreeFind<CR>
 noremap <Leader>w :w<CR>
 noremap <Leader>q :q<CR>
 noremap <Leader>q! :q!<CR>
