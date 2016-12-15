@@ -41,12 +41,18 @@ Plug 'MaxSt/FlatColor'
     set background=dark
 "}
 
-" lightline  (StatusBar)
+Plug 'mbbill/undotree'
+Plug 'benmills/vimux'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'svermeulen/vim-repeat'
 Plug 'wellle/targets.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'bling/vim-bufferline'
-let g:bufferline_rotate = 2
+Plug 'vim-airline/vim-airline'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_left_sep='░'
+let g:airline_right_sep='░'
+Plug 'vim-airline/vim-airline-themes'
+" let g:airline_theme='flatcolor'
 Plug 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
 Plug 'https://github.com/kien/ctrlp.vim'
@@ -58,6 +64,7 @@ Plug 'mattn/emmet-vim',{'for': ['html','xml']}
 Plug 'matchit.zip'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 Plug 'AndrewRadev/splitjoin.vim'
 "Plug 'cohama/lexima.vim'
 "Plug 'pangloss/vim-javascript'
@@ -77,10 +84,11 @@ autocmd BufWrite,BufEnter *.js :Neomake
 Plug 'isRuslan/vim-es6'
 Plug 'IN3D/vim-raml'
 Plug 'jiangmiao/auto-pairs'
-let g:AutoPairsShortcutBackInsert = '<M-b>'
+let g:AutoPairsFlyMode = 0
+let g:AutoPairsShortcutBackInsert = '<C-b>'
 Plug 'dyng/ctrlsf.vim'
 nmap g/ <Plug>CtrlSFPrompt
-let g:lightline = { 'colorscheme': 'flatcolor' }
+Plug 'bkad/CamelCaseMotion'
 
 " " Trigger configuration. Do not use <tab> if you use
 let g:UltiSnipsSnippetDirectories=["UltiSnips","plugged/vim-snippets/UltiSnips"]
@@ -228,6 +236,8 @@ nmap <leader>vpc :PlugClean<CR>
 nmap <leader>use :UltiSnipsEdit<CR>
 nmap <leader>en :e ~/.config/nvim/init.vim<CR>
 nmap <leader>sf :NERDTreeFind<CR>
+nmap <leader>n :NERDTreeToggle<CR>
+nnoremap U :UndotreeToggle<cr>
 noremap <Leader>w :w<CR>
 noremap <Leader>q :q<CR>
 noremap <Leader>q! :q!<CR>

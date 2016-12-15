@@ -11,7 +11,7 @@ export ANDROID_HOME=/usr/local/opt/android-sdk
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm ]
-nvm use 5.9.1
+nvm use 6.9.1
 #vimode
 bindkey -v
 
@@ -54,3 +54,4 @@ setopt hist_ignore_space
 setopt hist_verify
 setopt inc_append_history
 setopt share_history # share command history data
+[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
