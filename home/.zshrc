@@ -4,16 +4,21 @@ PROMPT='%B%m%~%b$(git_super_status) %# '
 # Start tmux on start
 if [ "$TMUX" = "" ]; then tmux; fi
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home
+autoload -Uz compinit && compinit
 
-#source /usr/share/nvm/init-nvm.sh
 export ANDROID_HOME=/usr/local/opt/android-sdk
+export PATH=${PATH}:${ANDROID_HOME}/tools
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm ]
 nvm use 6.9.1
 #vimode
 bindkey -v
+
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
 
 bindkey '^P' up-history
 bindkey '^N' down-history
@@ -55,3 +60,5 @@ setopt hist_verify
 setopt inc_append_history
 setopt share_history # share command history data
 [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
+
+export EDITOR=nvim

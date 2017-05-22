@@ -41,6 +41,22 @@ Plug 'MaxSt/FlatColor'
     set background=dark
 "}
 
+Plug 'bkad/CamelCaseMotion'
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+map <silent> ge <Plug>CamelCaseMotion_ge
+sunmap w
+sunmap b
+sunmap e
+sunmap ge
+Plug 'Yggdroot/indentLine'
+let g:indentLine_enabled = 0
+Plug 'sbdchd/neoformat'
+autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --print-width\ 100\ --single-quote\ --jsx-bracket-same-line
+" Use formatprg when available
+let g:neoformat_try_formatprg = 1
+autocmd BufWritePre *.js Neoformat
 Plug 'mbbill/undotree'
 Plug 'benmills/vimux'
 Plug 'terryma/vim-multiple-cursors'
@@ -78,8 +94,8 @@ let g:neomake_error_sign = {
         \ 'texthl': 'ErrorMsg'
         \ }
     "let g:neomake_open_list = 1
-let g:neomake_javascript_enabled_makers = ['jshint', 'jscs']
-let g:neomake_jsx_enabled_makers = ['eslint', 'jshint', 'jscs']
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_jsx_enabled_makers = ['eslint']
 autocmd BufWrite,BufEnter *.js :Neomake
 Plug 'isRuslan/vim-es6'
 Plug 'IN3D/vim-raml'
@@ -95,6 +111,9 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips","plugged/vim-snippets/UltiSnips"]
 let g:UltiSnipsExpandTrigger="<c-j>"
 " " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+Plug 'ryanoasis/vim-devicons'
+set encoding=utf8
+
 call plug#end()
 
 filetype plugin indent on    " required
@@ -245,4 +264,6 @@ noremap <Leader>wq :wq<CR>
 noremap <Leader>e :Errors<CR>
 noremap <Leader>vs :vsplit<CR>
 noremap <Leader>xs :split<CR>
+noremap <Leader>X <C-W>o
+noremap <Leader>ll :IndentLinesToggle<CR>
 
