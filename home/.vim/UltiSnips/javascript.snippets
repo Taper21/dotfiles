@@ -132,8 +132,12 @@ snippet ci "console.info" b
 console.info(${1:"${2:value}"});
 endsnippet
 
+snippet bbb "console.log" b
+console.log( '${2:value}'$3} )
+endsnippet
+
 snippet cl "console.log" b
-console.log( ${1:"${2:value}"} );
+console.log( '${2:value}'$3} )
 endsnippet
 
 snippet cd "console.debug" b

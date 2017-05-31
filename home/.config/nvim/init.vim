@@ -107,8 +107,8 @@ nmap g/ <Plug>CtrlSFPrompt
 Plug 'bkad/CamelCaseMotion'
 
 " " Trigger configuration. Do not use <tab> if you use
-let g:UltiSnipsSnippetDirectories=["UltiSnips","plugged/vim-snippets/UltiSnips"]
 let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 " " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 Plug 'ryanoasis/vim-devicons'
