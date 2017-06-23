@@ -58,6 +58,7 @@ autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --print-width\
 let g:neoformat_try_formatprg = 1
 autocmd BufWritePre *.js Neoformat
 Plug 'mbbill/undotree'
+Plug 'janko-m/vim-test'
 Plug 'benmills/vimux'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'svermeulen/vim-repeat'
