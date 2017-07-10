@@ -5,6 +5,7 @@ PROMPT='%B%m%~%b$(git_super_status) %# '
 if [ "$TMUX" = "" ]; then tmux; fi
 
 autoload -Uz compinit && compinit
+autoload -Uz bashcompinit && bashcompinit
 
 export ANDROID_HOME=/usr/local/opt/android-sdk
 export PATH=${PATH}:${ANDROID_HOME}/tools
@@ -67,3 +68,9 @@ if [ -f $HOME/.zshrc.local ]; then
     # if a local config file exists, source it
     source $HOME/.zshrc.local
 fi
+
+killport() {
+  pid=$(lsof -i :$1 | tail -n+2 | head -1 | awk '{ print $2 }')
+
+  kill -9 $pid
+}
