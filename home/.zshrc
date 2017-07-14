@@ -13,7 +13,7 @@ export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm ]
-nvm use 6.9.1
+# nvm use 6.9.1
 #vimode
 bindkey -v
 
@@ -74,3 +74,4 @@ killport() {
 
   kill -9 $pid
 }
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
