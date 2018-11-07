@@ -9,7 +9,7 @@ JSON.stringify( ${1:value}, null, 2 )
 endsnippet
 
 snippet cj "cl + jsons" b
-console.log( '${1:name}', JSON.stringify( ${2:value}, null, 2 ))
+console.log( '${1:name}', JSON.stringify( $1, null, 2 ))
 endsnippet
 
 snippet rql "require local node package" b
@@ -29,4 +29,15 @@ value => {
 $1
 }
 endsnippet
+
+snippet jsd "generate jsdoc template" b
+/**
+ * @name ${1:name}
+ * @desc Function $1
+ * @param {Object} arg1 Paramter 1
+ * @param {Object} [options] Additional options
+ * @return {Promise<Object>} the return value
+ */
+endsnippet
+
 
