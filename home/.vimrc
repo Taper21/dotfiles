@@ -56,11 +56,27 @@ sunmap e
 sunmap ge
 Plug 'Yggdroot/indentLine'
 let g:indentLine_enabled = 0
-Plug 'sbdchd/neoformat'
-autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --print-width\ 100\ --single-quote\ --jsx-bracket-same-line
-" Use formatprg when available
-let g:neoformat_try_formatprg = 1
-autocmd BufWritePre *.js Neoformat
+Plug 'w0rp/ale'
+" Fix files with prettier, and then ESLint.
+let g:ale_fixers = {'javascript': ['prettier', 'eslint']}"
+" Set this variable to 1 to fix files when you save them.
+let g:ale_fix_on_save = 1
+" " post install (yarn install | npm install) then load plugin only for editing supported files
+" Plug 'prettier/vim-prettier', {
+"   \ 'do': 'yarn install',
+"   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+" let g:prettier#exec_cmd_async = 1
+" " when running at every change you may want to disable quickfix
+" let g:prettier#quickfix_enabled = 0
+" let g:prettier#autoformat = 1
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
+" Plug 'sbdchd/neoformat'
+" autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --print-width\ 100\ --single-quote\ --jsx-bracket-same-line
+" " Use formatprg when available
+" autocmd FileType javascript setlocal formatprg=prettier\ --write\ --stdin\ --print-width\ 100\ --single-quote\ --jsx-bracket-same-line
+" autocmd BufWritePre *.js Neoformat
+" let g:neoformat_try_formatprg = 1
+
 Plug 'mbbill/undotree'
 Plug 'benmills/vimux'
 Plug 'terryma/vim-multiple-cursors'
@@ -94,19 +110,20 @@ Plug 'qpkorr/vim-bufkill'
 Plug 'janko-m/vim-test'
 "Plug 'cohama/lexima.vim'
 "Plug 'pangloss/vim-javascript'
-Plug 'neomake/neomake'
-let g:neomake_warning_sign = {
-        \ 'text': '?',
-        \ 'texthl': 'WarningMsg'
-        \ }
-let g:neomake_error_sign = {
-        \ 'text': '!',
-        \ 'texthl': 'ErrorMsg'
-        \ }
-    "let g:neomake_open_list = 1
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_jsx_enabled_makers = ['eslint']
-autocmd BufWrite,BufEnter *.js :Neomake
+"Plug 'neomake/neomake'
+"let g:neomake_warning_sign = {
+"        \ 'text': '?',
+"        \ 'texthl': 'WarningMsg'
+"        \ }
+"let g:neomake_error_sign = {
+"        \ 'text': '!',
+"        \ 'texthl': 'ErrorMsg'
+"        \ }
+"    "let g:neomake_open_list = 1
+"let g:neomake_javascript_enabled_makers = ['eslint']
+"let g:neomake_jsx_enabled_makers = ['eslint']
+"autocmd BufWrite,BufEnter *.js :Neomake
+Plug 'dgraham/vim-eslint'
 Plug 'isRuslan/vim-es6'
 Plug 'IN3D/vim-raml'
 Plug 'jiangmiao/auto-pairs'
