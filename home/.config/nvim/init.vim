@@ -34,7 +34,8 @@ if empty(glob("~/.vim/autoload/plug.vim"))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --all' }
+" let g:ycm_python_binary_path = 'python'
 "Colorscheme (Colorscheme){
 Plug 'challenger-deep-theme/vim',{'as':'challenger_deep'}
 
@@ -57,7 +58,7 @@ Plug 'sbdchd/neoformat'
 autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --print-width\ 100\ --single-quote\ --jsx-bracket-same-line
 " Use formatprg when available
 let g:neoformat_try_formatprg = 1
-" autocmd BufWritePre *.js Neoformat
+autocmd BufWritePre *.js Neoformat
 Plug 'mbbill/undotree'
 Plug 'benmills/vimux'
 Plug 'terryma/vim-multiple-cursors'
