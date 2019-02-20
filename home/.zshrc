@@ -1,4 +1,3 @@
-# Created by newuser for 5.0.2
 source ~/.zsh/zsh-git-prompt/zshrc.sh
 PROMPT='%B%m%~%b$(git_super_status) %# '
 # Start tmux on start
@@ -62,7 +61,7 @@ setopt inc_append_history
 setopt share_history # share command history data
 [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
 
-export EDITOR=nvim
+export EDITOR=vim
 
 if [ -f $HOME/.zshrc.local ]; then
     # if a local config file exists, source it
@@ -75,3 +74,6 @@ killport() {
   kill -9 $pid
 }
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+source ~/.rvm/scripts/rvm
+alias open=xdg-open
+# exec tmux
