@@ -18,6 +18,13 @@ set splitright splitbelow
 if &term == 'xterm' || &term == 'screen'
 set t_Co=256            " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
 endif
+
+if &term =~ '256color'
+    " Disable Background Color Erase (BCE) so that color schemes
+    " work properly when Vim is used inside tmux and GNU screen.
+    set t_ut=
+endif
+
 "set colorcolumn=80
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
@@ -36,8 +43,9 @@ if empty(glob("~/.vim/autoload/plug.vim"))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --all' }
-let g:ycm_python_interpreter_path = '/usr/local/opt/python2/bin/python'
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --all' }
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
+"
 "Colorscheme (Colorscheme){
 Plug 'challenger-deep-theme/vim',{'as':'challenger_deep'}
 
@@ -45,6 +53,7 @@ let g:challenger_deep_termcolors=16
 set background=dark
 "}
 
+Plug 'digitaltoad/vim-pug'
 Plug 'bkad/CamelCaseMotion'
 map <silent> w <Plug>CamelCaseMotion_w
 map <silent> b <Plug>CamelCaseMotion_b
@@ -56,12 +65,15 @@ sunmap e
 sunmap ge
 Plug 'Yggdroot/indentLine'
 let g:indentLine_enabled = 0
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 " Fix files with prettier, and then ESLint.
-let g:ale_fixers = {'javascript': ['prettier', 'eslint']}"
+" let g:ale_fixers = {'javascript': ['prettier', 'eslint', 'tsserver']}"
+let g:ale_fixers = {'javascript': ['prettier', 'eslint'],'typescript': ['prettier']}"
 " Set this variable to 1 to fix files when you save them.
 let g:ale_fix_on_save = 1
-" " post install (yarn install | npm install) then load plugin only for editing supported files
+let g:ale_completion_enabled = 1
+let g:ale_disable_lsp = 1
+" post install (yarn install | npm install) then load plugin only for editing supported files
 " Plug 'prettier/vim-prettier', {
 "   \ 'do': 'yarn install',
 "   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
@@ -76,14 +88,20 @@ let g:ale_fix_on_save = 1
 " autocmd FileType javascript setlocal formatprg=prettier\ --write\ --stdin\ --print-width\ 100\ --single-quote\ --jsx-bracket-same-line
 " autocmd BufWritePre *.js Neoformat
 " let g:neoformat_try_formatprg = 1
+Plug 'kkoomen/vim-doge'
+let g:doge_mapping='<Leader>D'
+
+Plug 'puremourning/vimspector'
+let g:vimspector_enable_mappings = 'HUMAN'
 
 Plug 'mbbill/undotree'
 Plug 'benmills/vimux'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'svermeulen/vim-repeat'
 Plug 'wellle/targets.vim'
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
 Plug 'vim-airline/vim-airline'
+set showtabline=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_left_sep='░'
 let g:airline_right_sep='░'
@@ -92,6 +110,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
 Plug 'https://github.com/kien/ctrlp.vim'
+let g:ctrlp_custom_ignore = '\v[\/](git|hg|svn|node_modules)$'
 let g:ctrlp_max_files=0
 let g:ctrlp_max_depth=40
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
@@ -108,6 +127,9 @@ Plug 'tpope/vim-unimpaired'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'qpkorr/vim-bufkill'
 Plug 'janko-m/vim-test'
+Plug 'inkarkat/vim-ingo-library'
+Plug 'inkarkat/vim-CountJump'
+Plug 'inkarkat/vim-ConflictMotions'
 "Plug 'cohama/lexima.vim'
 "Plug 'pangloss/vim-javascript'
 "Plug 'neomake/neomake'
@@ -141,6 +163,10 @@ let g:UltiSnipsEditSplit="vertical"
 Plug 'ryanoasis/vim-devicons'
 set encoding=utf8
 Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+" Language Servers
+" Plug 'Quramy/tsuquyomi'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
@@ -212,9 +238,6 @@ if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
-let g:SuperTabDefaultCompletionType = "context"
-let g:jedi#popup_on_dot = 0
-let g:ctrlp_custom_ignore = '\v[\/](git|hg|svn|node_modules)$'
 
 "swp nicht im ordner"
 "set backup
@@ -254,7 +277,7 @@ nmap <leader>vpi :PlugInstall<CR>
 nmap <leader>vpu :PlugUpdate<CR>
 nmap <leader>vpc :PlugClean<CR>
 nmap <leader>use :UltiSnipsEdit<CR>
-nmap <leader>en :e ~/.config/nvim/init.vim<CR>
+nmap <leader>en :e ~/.vimrc<CR>
 nmap <leader>sf :NERDTreeFind<CR>
 nmap <leader>n :NERDTreeToggle<CR>
 nnoremap U :UndotreeToggle<cr>
@@ -267,3 +290,6 @@ noremap <Leader>vs :vsplit<CR>
 noremap <Leader>xs :split<CR>
 noremap <Leader>X <C-W>o
 noremap <Leader>ll :IndentLinesToggle<CR>
+noremap <Leader>g :ALEGoToDefinition<CR>
+noremap <Leader>a :ALEImport<CR>
+noremap <Leader>f :ALEFindReferences<CR>
