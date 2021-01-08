@@ -62,7 +62,7 @@ setopt inc_append_history
 setopt share_history # share command history data
 [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
 
-export EDITOR=nvim
+export EDITOR=vim
 
 if [ -f $HOME/.zshrc.local ]; then
     # if a local config file exists, source it
