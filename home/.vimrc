@@ -37,6 +37,8 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+com! Fj %!python -m json.tool
+
 " Load vim-plug
 if empty(glob("~/.vim/autoload/plug.vim"))
     execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -68,11 +70,12 @@ let g:indentLine_enabled = 0
 Plug 'dense-analysis/ale'
 " Fix files with prettier, and then ESLint.
 " let g:ale_fixers = {'javascript': ['prettier', 'eslint', 'tsserver']}"
-let g:ale_fixers = {'javascript': ['prettier', 'eslint'],'typescript': ['prettier']}"
+let g:ale_fixers = {'javascript': ['prettier', 'eslint'],'typescript': ['prettier', 'eslint'], 'typescriptreact':['eslint']}"
+let g:ale_linters = {'javascript': ['prettier', 'eslint'],'typescript': ['prettier', 'eslint'], 'typescriptreact':['eslint']}"
 " Set this variable to 1 to fix files when you save them.
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
-let g:ale_disable_lsp = 1
+let g:ale_disable_lsp = 0
 " post install (yarn install | npm install) then load plugin only for editing supported files
 " Plug 'prettier/vim-prettier', {
 "   \ 'do': 'yarn install',
@@ -110,7 +113,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
 Plug 'https://github.com/kien/ctrlp.vim'
-let g:ctrlp_custom_ignore = '\v[\/](git|hg|svn|node_modules)$'
 let g:ctrlp_max_files=0
 let g:ctrlp_max_depth=40
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
@@ -118,7 +120,15 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'mattn/emmet-vim',{'for': ['html','xml']}
+Plug 'mattn/emmet-vim',{'for': ['html','xml', 'javascript']}
+let g:user_emmet_settings = {
+\  'javascript' : {
+\      'extends' : 'jsx',
+\  },
+  \ 'typescript' : {
+  \     'extends' : 'jsx',
+  \ },
+\}
 Plug 'tmhedberg/matchit'
 " Plug 'matchit.zip'
 Plug 'tpope/vim-commentary'
@@ -269,6 +279,7 @@ noremap <Leader>j :bp<CR>
 noremap <Leader>k :bn<CR>
 noremap <Leader>d :bd<CR>
 noremap <Leader>x :BD<CR>
+noremap <Leader>da :%bd\|e#<CR>
 nnoremap <Leader>tc :tabc<return>
 nnoremap <Leader>tn :tabn<return>
 nnoremap <Leader>tp :tabp<return>
@@ -293,3 +304,5 @@ noremap <Leader>ll :IndentLinesToggle<CR>
 noremap <Leader>g :ALEGoToDefinition<CR>
 noremap <Leader>a :ALEImport<CR>
 noremap <Leader>f :ALEFindReferences<CR>
+noremap <Leader>rn :ALERename<CR>
+noremap <Leader>fn :ALEFileRename<CR>
