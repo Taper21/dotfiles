@@ -279,7 +279,7 @@ noremap <Leader>j :bp<CR>
 noremap <Leader>k :bn<CR>
 noremap <Leader>d :bd<CR>
 noremap <Leader>x :BD<CR>
-noremap <Leader>da :%bd\|e#<CR>
+noremap <Leader>da :%bd\|e#\|bd#<CR>
 nnoremap <Leader>tc :tabc<return>
 nnoremap <Leader>tn :tabn<return>
 nnoremap <Leader>tp :tabp<return>
@@ -289,6 +289,7 @@ nmap <leader>vpu :PlugUpdate<CR>
 nmap <leader>vpc :PlugClean<CR>
 nmap <leader>use :UltiSnipsEdit<CR>
 nmap <leader>en :e ~/.vimrc<CR>
+nmap <leader>et :e ~/.tmux.conf<CR>
 nmap <leader>sf :NERDTreeFind<CR>
 nmap <leader>n :NERDTreeToggle<CR>
 nnoremap U :UndotreeToggle<cr>
