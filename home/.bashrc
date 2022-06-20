@@ -121,3 +121,4 @@ nvm use 5.9.1
 export PATH="$PATH:$HOME/.rvm/bin"
 
 complete -C /usr/local/bin/mc mc
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

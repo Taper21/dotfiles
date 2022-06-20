@@ -70,8 +70,8 @@ let g:indentLine_enabled = 0
 Plug 'dense-analysis/ale'
 " Fix files with prettier, and then ESLint.
 " let g:ale_fixers = {'javascript': ['prettier', 'eslint', 'tsserver']}"
-let g:ale_fixers = {'javascript': ['prettier', 'eslint'],'typescript': ['prettier', 'eslint'], 'typescriptreact':['eslint']}"
-let g:ale_linters = {'javascript': ['prettier', 'eslint'],'typescript': ['prettier', 'eslint'], 'typescriptreact':['eslint']}"
+let g:ale_fixers = {'javascript': ['prettier', 'eslint'],'typescript': ['prettier', 'eslint'], 'typescriptreact':['prettier','eslint']}"
+let g:ale_linters = {'javascript': ['prettier', 'eslint'],'typescript': ['prettier', 'eslint', 'tsserver'], 'typescriptreact':['eslint', 'prettier','tsserver']}"
 " Set this variable to 1 to fix files when you save them.
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
@@ -174,9 +174,11 @@ Plug 'ryanoasis/vim-devicons'
 set encoding=utf8
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
+Plug 'maxmellon/vim-jsx-pretty'
 " Language Servers
 " Plug 'Quramy/tsuquyomi'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'jparise/vim-graphql'
 
 call plug#end()
 
