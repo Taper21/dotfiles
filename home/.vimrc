@@ -37,7 +37,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-com! Fj %!python -m json.tool
+com! Json :%!python3 -m json.tool
 
 " Load vim-plug
 if empty(glob("~/.vim/autoload/plug.vim"))
@@ -67,15 +67,24 @@ sunmap e
 sunmap ge
 Plug 'Yggdroot/indentLine'
 let g:indentLine_enabled = 0
+Plug 'prettier/vim-prettier'
 Plug 'dense-analysis/ale'
 " Fix files with prettier, and then ESLint.
-" let g:ale_fixers = {'javascript': ['prettier', 'eslint', 'tsserver']}"
-let g:ale_fixers = {'javascript': ['prettier', 'eslint'],'typescript': ['prettier', 'eslint'], 'typescriptreact':['prettier','eslint']}"
-let g:ale_linters = {'javascript': ['prettier', 'eslint'],'typescript': ['prettier', 'eslint', 'tsserver'], 'typescriptreact':['eslint', 'prettier','tsserver']}"
+let g:ale_fixers = {
+      \  'javascript': ['prettier', 'eslint'],
+      \  'typescript': ['prettier', 'eslint'],
+      \  'typescriptreact': ['prettier','eslint'],
+      \  'python': ['black'],
+      \ }
+let g:ale_linter_aliases = {'typescriptreact': ['typescript']}
+let g:ale_linters = {'javascript': ['prettier', 'eslint'],'typescript': ['prettier', 'eslint', 'tsserver'], 'typescriptreact':['prettier','eslint', 'tsserver'], 'python':['pylint']}"
 " Set this variable to 1 to fix files when you save them.
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 let g:ale_disable_lsp = 0
+let g:ale_linters_explicit = 1
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '⚠️'
 " post install (yarn install | npm install) then load plugin only for editing supported files
 " Plug 'prettier/vim-prettier', {
 "   \ 'do': 'yarn install',
@@ -177,7 +186,6 @@ Plug 'peitalin/vim-jsx-typescript'
 Plug 'maxmellon/vim-jsx-pretty'
 " Language Servers
 " Plug 'Quramy/tsuquyomi'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jparise/vim-graphql'
 
 call plug#end()
