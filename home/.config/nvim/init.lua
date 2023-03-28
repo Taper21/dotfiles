@@ -228,9 +228,30 @@ require('lazy').setup({
       pcall(require('nvim-treesitter.install').update { with_sync = true })
     end,
   },
+  -- { -- Tmux navigation
+  --   'aserowy/tmux.nvim',
+  --   config = function() return require("tmux").setup() end,
+  -- },
   { -- Tmux navigation
-    'aserowy/tmux.nvim',
-    config = function() return require("tmux").setup() end
+    'otavioschwanck/cool-substitute.nvim',
+    config = function() return require'cool-substitute'.setup({setup_keybindings= true}) end,
+  },
+  { -- Tmux navigation
+    'alexghergh/nvim-tmux-navigation',
+    config = function()
+        require'nvim-tmux-navigation'.setup {
+            disable_when_zoomed = true, -- defaults to false
+            keybindings = {
+                left = "<C-h>",
+                down = "<C-j>",
+                up = "<C-k>",
+                right = "<C-l>",
+                last_active = "<C-\\>",
+                next = "<C-Space>",
+            }
+        }
+    end
+
   },
   { -- bufferline
     'akinsho/bufferline.nvim',
@@ -649,8 +670,8 @@ vim.keymap.set('n', '<Leader>j', ':bp<CR>', { desc = 'Move to previous buffer' }
 vim.keymap.set('n', '<Leader>k', ':bn<CR>', { desc = 'Move to next buffer' })
 vim.keymap.set('n', '<Leader>d', ':bd<CR>', { desc = 'Close current buffer' })
 vim.keymap.set('n', '<Leader>da', ':%bd|e#|bd#<CR>', { desc = 'Close all buffer except the current one' })
-vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', { desc = 'Toggle Nvim tree' })
-vim.keymap.set('n', '<C-m>', ':NvimTreeFindFile<CR>', { desc = 'Find file in file tree' })
+vim.keymap.set('n', '<C-m>', ':NvimTreeToggle<CR>', { desc = 'Toggle Nvim tree' })
+vim.keymap.set('n', '<C-m>m', ':NvimTreeFindFile<CR>', { desc = 'Find file in file tree' })
 vim.keymap.set('n', 'g/', ':CtrlSF ', { desc = 'Search for text in all files' })
 -- Easy split navigation
 -- vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'navigate to left window' })
