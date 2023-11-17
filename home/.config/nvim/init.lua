@@ -84,7 +84,7 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim', tag= 'legacy' },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -112,13 +112,40 @@ require('lazy').setup({
     },
   },
 
+
+  { -- Theme 
+    "ful1e5/onedark.nvim",
+    priority = 1000,
+    name = "onedark",
+    -- config = function()
+    --   vim.cmd.colorscheme 'onedark'
+    -- end,
+  },
+
+  { -- Theme 
+    "ghifarit53/tokyonight-vim",
+    priority = 1000,
+    name = "tokyonight",
+    -- config = function()
+    --   vim.cmd.colorscheme 'tokyonight'
+    -- end,
+  },
+
+  { -- Theme 
+    "sainnhe/sonokai",
+    priority = 1000,
+    name = "sonokai",
+    -- config = function()
+    --   vim.cmd.colorscheme 'sonokai'
+    -- end,
+  },
   { -- Theme 
     "challenger-deep-theme/vim",
     priority = 1000,
     name = "challenger_deep",
-    config = function()
-      vim.cmd.colorscheme 'challenger_deep'
-    end,
+    -- config = function()
+    --   vim.cmd.colorscheme 'challenger_deep'
+    -- end,
   },
   { -- Theme 
     "tanvirtin/monokai.nvim",
@@ -132,6 +159,9 @@ require('lazy').setup({
     "catppuccin/nvim",
     priority = 1000,
     name = "catppuccin",
+    config = function()
+      vim.cmd.colorscheme 'catppuccin'
+    end,
   },
   { -- Dashboard
     'glepnir/dashboard-nvim',
@@ -170,6 +200,14 @@ require('lazy').setup({
           action = 'e ~/.config/nvim',
           key = 'c',
         },
+        {
+          icon = '⛔ ',
+          icon_hl = '@variable',
+          desc = 'Exit Dashboard',
+          group = 'ExitDashboard',
+          action = 'e ',
+          key = 'q',
+        },
       },
     },
       }
@@ -190,15 +228,7 @@ require('lazy').setup({
     },
   },
 
-  { -- Add indentation guides even on blank lines
-    'lukas-reineke/indent-blankline.nvim',
-    -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help indent_blankline.txt`
-    opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
-    },
-  },
+{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
@@ -329,6 +359,9 @@ require('lazy').setup({
       },
     }
   },
+  { "chrisgrieser/nvim-spider", lazy = true },
+  { "sindrets/diffview.nvim" },
+  { "arthurxavierx/vim-caser" },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
@@ -346,6 +379,11 @@ require('lazy').setup({
   --    to get rid of the warning telling you that there are not plugins in `lua/custom/plugins/`.
   { import = 'custom.plugins' },
 }, {})
+
+vim.keymap.set({"n", "o", "x"}, "w", "<cmd>lua require('spider').motion('w')<CR>", { desc = "Spider-w" })
+vim.keymap.set({"n", "o", "x"}, "e", "<cmd>lua require('spider').motion('e')<CR>", { desc = "Spider-e" })
+vim.keymap.set({"n", "o", "x"}, "b", "<cmd>lua require('spider').motion('b')<CR>", { desc = "Spider-b" })
+vim.keymap.set({"n", "o", "x"}, "ge", "<cmd>lua require('spider').motion('ge')<CR>", { desc = "Spider-ge" })
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -447,10 +485,10 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'help', 'vim' },
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'help', 'vim', 'sql' },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-  auto_install = false,
+  auto_install = true,
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
@@ -670,8 +708,8 @@ vim.keymap.set('n', '<Leader>j', ':bp<CR>', { desc = 'Move to previous buffer' }
 vim.keymap.set('n', '<Leader>k', ':bn<CR>', { desc = 'Move to next buffer' })
 vim.keymap.set('n', '<Leader>d', ':bd<CR>', { desc = 'Close current buffer' })
 vim.keymap.set('n', '<Leader>da', ':%bd|e#|bd#<CR>', { desc = 'Close all buffer except the current one' })
-vim.keymap.set('n', '<C-m>', ':NvimTreeToggle<CR>', { desc = 'Toggle Nvim tree' })
-vim.keymap.set('n', '<C-m>m', ':NvimTreeFindFile<CR>', { desc = 'Find file in file tree' })
+vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', { desc = 'Toggle Nvim tree' })
+vim.keymap.set('n', '<C-n>n', ':NvimTreeFindFile<CR>', { desc = 'Find file in file tree' })
 vim.keymap.set('n', 'g/', ':CtrlSF ', { desc = 'Search for text in all files' })
 -- Easy split navigation
 -- vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'navigate to left window' })
@@ -679,6 +717,10 @@ vim.keymap.set('n', 'g/', ':CtrlSF ', { desc = 'Search for text in all files' })
 -- vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'navigate to upper window' })
 -- vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'navigate to lower window' })
 
+vim.cmd([[
+  au FileType typescript syntax match typescriptSQL /SQL`.*`/
+  syntax region typescriptSQL start=/SQL`/ end=/`/
+]])
 
 -- noremap <Leader>j :bp<CR>
 -- noremap <Leader>k :bn<CR>
