@@ -1,0 +1,115 @@
+# /Users/sstoerchle/.config/tmuxinator/aryve-studio.yml
+
+name: aryve
+root: ~/Documents/aryve-cms/
+
+# Optional tmux socket
+# socket_name: foo
+
+# Note that the pre and post options have been deprecated and will be replaced by
+# project hooks.
+
+# Project hooks
+
+# Runs on project start, always
+# on_project_start: command
+
+# Run on project start, the first time
+# on_project_first_start: command
+
+# Run on project start, after the first time
+# on_project_restart: command
+
+# Run on project exit ( detaching from tmux session )
+# on_project_exit: command
+
+# Run on project stop
+# on_project_stop: command
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: tmux-non-dead.tmux
+#
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+# startup_window: editor
+
+# Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
+# startup_pane: 1
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# attach: false
+
+windows:
+  - <💻Server>   :
+      layout: even-horizontal
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - cd cms-api && podman machine start && podman restart postgres14 && podman restart minio && npm run dev
+        - cd app-api && npm run dev
+        - cd cms-frontend && npm run start
+        - cd worker && npm run dev
+        - cd pointcloud-utils-api && s3fs iona-cms-storage ${HOME}/bucket -o passwd_file=${HOME}/.passwd-s3fs -o url=http://localhost:9000 -o use_path_request_style && source .venv/bin/activate && python main.py
+        - cd namespace-deployment-api && npm run dev
+  - <⚒️ BE>   :
+      layout: even-horizontal
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - cd cms-api && figlet CMS-API Backend Server
+  - <🎨FE>   :
+      layout: even-horizontal
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - cd cms-frontend && figlet CMS-Frontend
+  - <📱APP>   :
+      layout: even-horizontal
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - cd app-api && figlet APP-API
+  - <👷Worker>   :
+      layout: even-horizontal
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - cd worker && figlet Worker
+  - <🤹PC-Utils>   :
+      layout: even-horizontal
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - cd pointcloud-uitls-api && figlet Pointcloud-utils API
+  - <🚀Namespace-API>   :
+      layout: even-horizontal
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - cd namespace-deployment-api && figlet Namespace deployment API
+  - <💾DB>   :
+      layout: even-horizontal
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - cd db/db-migration && figlet DB-Migration
+  - <⎈ Helm>   :
+      layout: even-horizontal
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - cd helm && figlet Helm
